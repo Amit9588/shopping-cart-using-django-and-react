@@ -3,5 +3,6 @@ from django.urls import path,include
 from .views import home
 
 urlpatterns =[
-    path('', home, name='home.api')
+    path('', home, name='home.api'),
+    path('category/',include('api.category.urls'))
 ]

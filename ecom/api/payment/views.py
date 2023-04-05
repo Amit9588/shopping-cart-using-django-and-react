@@ -57,4 +57,6 @@ def process_payment(request,id,token):
             'transaction':{"id": result.transaction.id,"amount":result.transaction.amount}
         })
     
+    else:
+        return JsonResponse({'error':True,'sucess':False})
     

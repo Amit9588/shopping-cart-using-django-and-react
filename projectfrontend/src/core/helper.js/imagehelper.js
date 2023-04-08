@@ -1,17 +1,18 @@
 import React from 'react'
 
-export default function ImageHelper(){
+const ImageHelper =({product}) =>{
     const imageurl = product ? product.image :
-    `https://images.pexels.com/photos/13733057/pexels-photo-13733057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`
+    `https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940`
     return (
         
-        <div className='rounded border border-sucess p-2' >
+        <div className='rounded border border-sucess p-2 cart-image-container' >
             <img src={imageurl}
-            styles = {{maxheight : "100%", maxwidth:"100%"}}
-            className="mb-3 rounded"
+            // styles = {{width:"300px"}}
+            className="mb-3 rounded cart-image"
             alt = ""
             />
 
         </div>
     )
 }
+export default ImageHelper;

@@ -1,7 +1,7 @@
 import React from "react"
-import ImageHelper from "./helper.js/imagehelper";
+import ImageHelper from "./helper/imagehelper";
 import { Navigate } from "react-router-dom";
-import { addItemtoCart,removeItemfromCart } from "./helper.js/cartHelper";
+import { addItemtoCart,removeItemfromCart } from "./helper/cartHelper";
 
 
 // to deal with this later

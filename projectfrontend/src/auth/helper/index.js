@@ -1,5 +1,6 @@
 import {API} from "../../backend"
-import {cartEmpty} from "../../core/helper/cartHelper"
+// import {cartEmpty} from "../../core/helper/cartHelper"
+import { cartEmpty } from "../../core/helper/cartHelper";
 
 export const signup = user => {
     return fetch(`${API}user/`, {
@@ -18,7 +19,7 @@ export const signup = user => {
 
 }
 
-export const signin = user => {
+export const signin = (user) => {
     const fromData = new FormData()
 
     for (const name in user) {
@@ -71,7 +72,7 @@ export const signout = next => {
             console.log("Signout Success")
             next();
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
         
     }
 }

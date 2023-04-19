@@ -1,53 +1,36 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./core/Home";
 import PrivateRoute from "./auth/helper/PrivateRoute";
 import Signup from "./user/signup";
 import UserDashboard from "./user/userdashboard";
-import  Signin  from "./user/signin";
+import Signin  from "./user/signin";
 
-// const Route = () => {
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/signin" element={<Signin />} />
+      {/* <Route path="/cart" element={<Cart />} /> */}
+      <Route path="/user/dashboard" element={
+        <PrivateRoute>
+          <UserDashboard/>
+        </PrivateRoute>} />
+    </Routes>
+  );
+};
 
-// };
+const AllRoutes = () => {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+};
 
-// function AllRoutes() {
-//     return (
-//         <Router>
-//             <Routes>
-//                 <Route path="/" exact element={<Home/>} />
-//                 <Route path="/signup" exact element={<Signup/>} />
-//                 {/* <PrivateRoutes path ="/user/dashboard" exact element={<userdashboard/>}/>  */}
-//                 <Route path="/user/dashboard" element={
-//                     <PrivateRoutes>
-//                         <userdashboard />
-//                     </PrivateRoutes>
-//                 } />
-//             </Routes>
-//         </Router>
-//     );
-// }
 
-function AllRoutes() {
-    return (
-      <Router>
-        <Routes>
-          
-          <Route path="/" exact element={<Home/>} />
-          <Route path="/signup" exact element={<Signup/>} />
-          <Route path="/signin" exact element={<Signin/>} />
-           <Route
-            path="/user/dashboard"
-            element={
-              <PrivateRoute>
-                <UserDashboard />
-             </PrivateRoute>
-            } 
-          />
-        </Routes>
-      </Router>
-    );
-  }
 
 export default AllRoutes;
 

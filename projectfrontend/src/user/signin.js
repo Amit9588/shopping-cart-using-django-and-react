@@ -22,12 +22,13 @@ const Signin = () => {
     const OnSubmit = (event) =>{
         event.preventDefault();
         setValues({...values, error:false,loading:true})
+
         signin({email,password})
         .then(data => {
             console.log("DATA" ,data)
             if (data.token){
-              let sessionToken = data.token;
-              authenticate(sessionToken, () => {
+              // let sessionToken = data.token;
+              authenticate(data, () => {
                 console.log("Token Added");
                 setValues({
                   ...values,

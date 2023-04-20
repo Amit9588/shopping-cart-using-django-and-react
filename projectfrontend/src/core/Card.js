@@ -1,34 +1,32 @@
-import React from "react"
+import React, {useState} from "react"
 import ImageHelper from "./helper/imagehelper";
 import { Navigate } from "react-router-dom";
 import { addItemtoCart,removeItemfromCart } from "./helper/cartHelper";
+import { isAuthenticated } from "../auth/helper";
 
-
-// to deal with this later
-const isAuthenticated = true;
 
 const Card = ({
     product,
     addtocart= true,
-    removefromCart = true
+    removefromCart = false,
 
 }) => {
-
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const cartTitle = product ? product.name :"A photo from pixel"
   const cartDescription = product ? product.description :"Default description"
   const cartPrice = product ? product.price :"Default"
 
   const addToCart=() => {
-    if (isAuthenticated){
-      addItemtoCart(product, ()=> {})
+    if (isAuthenticated()){
+      addItemtoCart(product, ()=> setShouldRedirect(true))
       console.log("Added to cart")
     }else {
       console.log ("Login Please")
       }
     };
-  const getAredirect = Navigate => {
-    if (Navigate) {
-      return <Navigate to= "/cart" />
+  const getAredirect = shouldRedirect => {
+    if (shouldRedirect) {
+      return shouldRedirect &&  <Navigate to= "/Cart"  />
       }
     };
   const showAddToCart = addToCart =>{
@@ -64,6 +62,7 @@ const Card = ({
         <div className="card-header lead">{cartTitle}</div>
 
         <div className="card-body">
+          {getAredirect(shouldRedirect)}
            < ImageHelper product={product}/>
           
           <p className="lead bg-success font-weight-normal text-wrap">

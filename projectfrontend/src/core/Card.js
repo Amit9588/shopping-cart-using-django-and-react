@@ -8,7 +8,10 @@ import { isAuthenticated } from "../auth/helper";
 const Card = ({
     product,
     addtocart= true,
-    removefromCart = false,
+    removefromCart = true,
+    reload = undefined,
+    setReload = f => f,
+    // function 
 
 }) => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
@@ -42,17 +45,18 @@ const Card = ({
       )
     }
 
-    const showRemovefromCart = removefromCart => {
+    const showRemovefromCart = removeFromCart => {
       return(
         removefromCart && (
           <button
                 onClick={() => {
                   removeItemfromCart(product._id);
+                  setReload(!reload)
                   console.log("Product Handle form Cart")
                 }}
                 className="btn btn-block btn-outline-danger mt-2 mb-2"
               >
-                Remove from cart
+                Remove from Cart
           </button>
         )
       )

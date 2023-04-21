@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { signout, isAuthenticated } from '../auth/helper';
 
 const Menu = () => {
+  
   const location = useLocation();
   const navigate = useNavigate();
   const activeStyle = {
@@ -45,7 +46,6 @@ const Menu = () => {
           <span
             onClick={() => {
               signout(() => {
-                // navigate('/');
                 <NavLink to="/"/>
               });
             }}
